@@ -1,6 +1,6 @@
-# 版本一
+# 版本二
 
-crawlerv1.go
+crawlerv2.go
 ```go
 package main
 
@@ -32,6 +32,7 @@ func main() {
 	)
 	os.Mkdir("./downloaded/", 0777)
 	os.Mkdir("./downloaded/assets", 0777)
+	os.Mkdir("./downloaded/gitbook", 0777)
 
 	c.OnResponse(func(r *colly.Response) {
 		// // 以下代码将打印得到的response body的全部内容
@@ -55,6 +56,64 @@ func main() {
 			// TODO create dirs before create file
 		} else {
 			savedPath := "./downloaded/" + h[len(h)-2] + "/" + h[len(h)-1]
+			f, err := os.Create(savedPath)
+			errCheck(err)
+			io.Copy(f, res.Body)
+		}
+	})
+
+	// search for all link tags that have a rel attribute that is equal to stylesheet - CSS
+	c.OnHTML("link[rel='stylesheet']", func(e *colly.HTMLElement) {
+		// hyperlink reference
+		link := e.Attr("href")
+		// 获取css的绝对路径
+		fullurl := e.Request.AbsoluteURL(link)
+		// fmt.Println("CSS path is: " + fullurl)
+		res, _ := http.Get(fullurl)
+		//解析这个 URL 并确保解析没有出错。
+		u, err := url.Parse(fullurl)
+		errCheck(err)
+		h := strings.Split(u.Path, "/")
+		// fmt.Println(u)
+		// fmt.Println(h[1])
+		if (h[len(h)-2] != "gitbook") {
+			dirPath := "./downloaded/gitbook/" + h[len(h)-2]
+			os.Mkdir(dirPath, 0777)
+			savedPath := "./downloaded/gitbook/" + h[len(h)-2] + "/" + h[len(h)-1]
+			f, err := os.Create(savedPath)
+			errCheck(err)
+			io.Copy(f, res.Body)
+		} else {
+			savedPath := "./downloaded/gitbook/" + h[len(h)-1]
+			f, err := os.Create(savedPath)
+			errCheck(err)
+			io.Copy(f, res.Body)
+		}
+	})
+
+	// search for all script tags with src attribute -- JS
+	c.OnHTML("script[src]", func(e *colly.HTMLElement) {
+		// src attribute
+		link := e.Attr("src")
+		// 获取js的绝对路径
+		fullurl := e.Request.AbsoluteURL(link)
+		// fmt.Println("JavaScript path is: " + fullurl)
+		res, _ := http.Get(fullurl)
+		//解析这个 URL 并确保解析没有出错。
+		u, err := url.Parse(fullurl)
+		errCheck(err)
+		h := strings.Split(u.Path, "/")
+		// fmt.Println(u)
+		// fmt.Println(h[1])
+		if (h[len(h)-2] != "gitbook") {
+			dirPath := "./downloaded/gitbook/" + h[len(h)-2]
+			os.Mkdir(dirPath, 0777)
+			savedPath := "./downloaded/gitbook/" + h[len(h)-2] + "/" + h[len(h)-1]
+			f, err := os.Create(savedPath)
+			errCheck(err)
+			io.Copy(f, res.Body)
+		} else {
+			savedPath := "./downloaded/gitbook/" + h[len(h)-1]
 			f, err := os.Create(savedPath)
 			errCheck(err)
 			io.Copy(f, res.Body)
@@ -92,11 +151,6 @@ func main() {
 		// Only those links are visited which are in AllowedDomains
 		c.Visit(e.Request.AbsoluteURL(link))
 	})
-
-	// // Before making a request print "Visiting ..."
-	// c.OnRequest(func(r *colly.Request) {
-	// 	fmt.Println("Visiting", r.URL.String())
-	// })
 
 	// Start scraping on http://tumregels.github.io/Network-Programming-with-Go/
 	c.Visit(destUrl)
