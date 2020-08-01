@@ -1,4 +1,4 @@
-# 参考资料
+## 参考资料
 
 go爬虫框架colly源码以及软件架构分析
 
@@ -52,7 +52,7 @@ go mod 简单使用教程
 
 [https://www.cnblogs.com/bossliu/p/5043631.html](https://www.cnblogs.com/bossliu/p/5043631.html)
 
-## 更多关于colly的资料
+### 更多关于colly的资料
 go-colly 官方文档翻译
 
 [https://www.jianshu.com/p/fdf96da2d335](https://www.jianshu.com/p/fdf96da2d335)

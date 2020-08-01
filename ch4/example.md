@@ -1,4 +1,4 @@
-# 官方给出的示例
+## 官方给出的示例
 
 在这里仅作简单介绍，如要详细了解colly的源码，建议参阅[go爬虫框架colly源码以及软件架构分析](https://www.jianshu.com/p/93187b80541f)，本章节的部分内容亦选自此文
 
@@ -45,7 +45,7 @@ func main() {
 ```
 这是官方给的示例， 可以看到`colly.NewCollector`创建一个`收集器`， colly的所有处理逻辑都是以`Collector`为核心进行操作的。
 
-## Collector结构体的定义
+### Collector结构体的定义
 ```go
 // Collector provides the scraper instance for a scraping job
 type Collector struct {
@@ -119,7 +119,7 @@ type Collector struct {
 }
 ```
 
-## Colly支持的部分事件类型
+### Colly支持的部分事件类型
 ```go
 // 请求执行之前调用
 c.OnRequest(func(r *colly.Request) {

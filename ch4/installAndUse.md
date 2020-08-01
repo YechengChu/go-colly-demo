@@ -1,11 +1,11 @@
-# 安装和快速使用
+## 安装和快速使用
 
-## 安装
+### 安装
 colly的安装和其他的Go库安装一样，可以使用go get
 ```bash
 go get -u github.com/gocolly/colly
 ```
-## 快速使用
+### 快速使用
 在使用时，我们首先需要在代码中导入colly
 ```go
 import "github.com/gocolly/colly"

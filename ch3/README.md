@@ -1,4 +1,4 @@
-# 目标网站元素
+## 目标网站元素
 
 打开目标网站，右击打开审查元素(inspect element)，也可以使用快捷键`option+command+i`打开
 

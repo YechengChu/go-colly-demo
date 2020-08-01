@@ -1,4 +1,4 @@
-# 版本介绍
+## 版本介绍
 
 - 此版本增加了对于CSS和JavaScript文件的保存，使得保存的html打开展示和目标网站更加相近
 - 根据前文[目标网站元素](../ch3/README.md)中的观察，CSS和JavaScript文件被存放于gitbook文件夹中，于是在downloaded文件夹中创建gitbook文件夹

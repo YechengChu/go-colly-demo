@@ -1,4 +1,4 @@
-# Colly爬取图片的示例
+## Colly爬取图片的示例
 
 在开始我们的项目之前，我们先来看一个使用colly爬取图片的例子
 
@@ -51,6 +51,6 @@ func main()  {
 } // main
 ```
 
-## 结果展示
+### 结果展示
 
 <div align=center><img src="../images/18.png"/></div>
