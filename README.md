@@ -14,5 +14,7 @@
 
 此练习为task5
 
+你也可以下载一份[pdf](https://github.com/YechengChu/practice/raw/master/proj2/task5/Go语言练习——使用Colly爬取网站并展示.pdf)格式的本文文档
+
 ---
 
