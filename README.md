@@ -10,7 +10,9 @@
 
 本文中colly爬虫练习代码的GitHub链接如下
 
-[https://github.com/ruilisi/golang-crawler-example](https://github.com/ruilisi/golang-crawler-example)
+[https://github.com/YechengChu/practice/tree/master/proj2](https://github.com/YechengChu/practice/tree/master/proj2)
+
+此练习为task5
 
 ---
 

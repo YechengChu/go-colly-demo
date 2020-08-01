@@ -155,4 +155,4 @@ c.OnScraped(func(r *colly.Response) {
     fmt.Println("Finished", r.Request.URL)
 })
 ```
-<div align=center><img src="../images/17.png"/></div>
+<div align=center><img height=636 width=360 src="../images/17.png"/></div>
